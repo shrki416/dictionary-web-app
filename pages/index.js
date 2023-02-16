@@ -6,7 +6,7 @@ export default function Home() {
       <Head>
         <title>Create Next App</title>
         <meta name="description" content="Dictionary Web App" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/images/favicon.ico" />
       </Head>
 
       <div>
