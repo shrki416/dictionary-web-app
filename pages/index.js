@@ -2,9 +2,26 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { WORD } from "../data";
+/*
+  This is to fetch data from an API, when ready
+*/
+import { fetchWords } from "../lib/load-words";
 
-export default function Home() {
-  console.log({ WORD });
+export async function getStaticProps() {
+  const words = await fetchWords("keyboard");
+  console.log(words);
+  return {
+    props: {
+      words,
+    },
+  };
+}
+
+export default function Home(props) {
+  // console.log({ WORD });
+
+  const word = props.words[0];
+  console.log(`🍏`, word);
 
   const audioFile = WORD.phonetics[2].audio;
 
@@ -48,9 +65,7 @@ export default function Home() {
         <input type="search" name="" id="" />
         <p>{WORD.word}</p>
         <p>{WORD.phonetic}</p>
-        <button>
-          <Image src="./images/icon-play.svg" width={30} height={30} />
-        </button>
+        <Image src="./images/icon-play.svg" width={50} height={50} />
         <audio controls src={audioFile}>
           Your browser does not support the
           <code>audio</code> element.
@@ -77,4 +92,8 @@ export default function Home() {
 /* 
   using SVG as components imports:
   https://www.youtube.com/watch?v=9tJTEGG0t-M
+
+  Other resources:
+  - This is to fetch data from an API
+  https://medium.com/@kusuma844/easiest-way-for-next-js-to-fetch-external-api-for-displaying-data-2ebabbdd3c9e
 */
