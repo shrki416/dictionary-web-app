@@ -1,6 +1,6 @@
-import { COLORS, FAMILIES, WEIGHTS } from "./constants";
+import { COLORS, FAMILIES, WEIGHTS } from "../../constants";
 
-import { createGlobalStyle } from "styled-components/macro";
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
 
