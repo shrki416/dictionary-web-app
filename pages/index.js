@@ -1,7 +1,10 @@
 import GlobalStyles from "../components/GlobalStyles";
 import Head from "next/head";
+import Header from "../components/Header";
+import { Howl } from "howler";
 import Image from "next/image";
 import Link from "next/link";
+import MaxWidthWrapper from "../components/MaxWidthWrapper/MaxWidthWrapper";
 import { WORD } from "../data";
 /*
   This is to fetch data from an API, when ready
@@ -26,53 +29,36 @@ export default function Home(props) {
 
   const audioFile = WORD.phonetics[2].audio;
 
+  const sound = new Howl({
+    src: [audioFile],
+  });
+
   return (
     <>
       <GlobalStyles />
-      <div>
+      <MaxWidthWrapper>
         <Head>
           <title>Create Next App</title>
           <meta name="description" content="Dictionary Web App" />
           <link rel="icon" href="/images/favicon.ico" />
         </Head>
 
-        <header>
-          <Image
-            src="./images/logo.svg"
-            width={30}
-            height={30}
-            alt="logo"
-            priority
-          />
-          <label htmlFor="font-choice"></label>
-
-          <select name="font-choice" id="font-choice">
-            <option value="mono">Mono</option>
-            <option value="serif">Serif</option>
-            <option value="sans-serif">Sans Serif</option>
-          </select>
-
-          {/* toggle switch */}
-          <input type="checkbox" id="toggle" />
-          <label htmlFor="toggle"></label>
-
-          <Image
-            src="./images/icon-moon.svg"
-            width={20}
-            height={20}
-            alt="icon"
-            priority
-          />
-        </header>
+        <Header />
         <main>
           <input type="search" name="" id="" />
           <p>{WORD.word}</p>
           <p>{WORD.phonetic}</p>
-          <Image src="./images/icon-play.svg" width={50} height={50} />
-          <audio controls src={audioFile}>
+          <Image
+            src="./images/icon-play.svg"
+            width={50}
+            height={50}
+            onClick={() => sound.play()}
+            alt="play button"
+          />
+          {/* <audio controls src={audioFile}>
             Your browser does not support the
             <code>audio</code> element.
-          </audio>
+          </audio> */}
         </main>
         <footer>
           <p>Source</p>
@@ -88,7 +74,7 @@ export default function Home(props) {
             </span>
           </Link>
         </footer>
-      </div>
+      </MaxWidthWrapper>
     </>
   );
 }
@@ -100,4 +86,7 @@ export default function Home(props) {
   Other resources:
   - This is to fetch data from an API
   https://medium.com/@kusuma844/easiest-way-for-next-js-to-fetch-external-api-for-displaying-data-2ebabbdd3c9e
+
+  Darkmode resource using styled-components:
+  https://medium.com/bigpanda-engineering/dark-theme-with-styled-components-a573dd898e2a
 */

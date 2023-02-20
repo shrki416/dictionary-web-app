@@ -3,6 +3,25 @@ import { COLORS, FAMILIES, WEIGHTS } from "../../constants";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
+:root {
+    --white: ${COLORS.white};
+    --gray-100: ${COLORS.gray[100]};
+    --gray-200: ${COLORS.gray[200]};
+    --gray-300: ${COLORS.gray[300]};
+    --gray-400: ${COLORS.gray[400]};
+    --gray-500: ${COLORS.gray[500]};
+    --gray-600: ${COLORS.gray[600]};
+    --gray-700: ${COLORS.gray[700]};
+    --primary: ${COLORS.primary};
+    --secondary: ${COLORS.secondary};
+
+    --ff-mono: ${FAMILIES.mono};
+    --ff-serif: ${FAMILIES.serif};
+    --ff-sans-serif: ${FAMILIES.sansSerif};
+
+    -fw-normal: ${WEIGHTS.normal};
+    -fw-bold: ${WEIGHTS.bold};
+}
 
 /*
   1. Use a more-intuitive box-sizing model.
