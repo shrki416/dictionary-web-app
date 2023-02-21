@@ -47,7 +47,7 @@ const StyledHeader = styled.header`
 `;
 
 const ThemeWrapper = styled.div`
-  border: 1px solid var(--gray-200);
+  /* border: 1px solid var(--gray-200); */
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -55,6 +55,12 @@ const ThemeWrapper = styled.div`
 
 const Select = styled.select`
   /* align-self: end; */
+  all: unset;
+
+  & [slot="option"] {
+    margin-top: 0.5rem;
+    border: 1px solid red;
+  }
 `;
 
 const ThemeSwitcher = styled.div`
