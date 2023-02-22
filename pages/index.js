@@ -89,4 +89,9 @@ export default function Home(props) {
 
   Darkmode resource using styled-components:
   https://medium.com/bigpanda-engineering/dark-theme-with-styled-components-a573dd898e2a
+
+  Select accessibility styles:
+  https://dev.to/emmabostian/creating-a-custom-accessible-drop-down-3gmo
+  https://css-tricks.com/striking-a-balance-between-native-and-custom-select-elements/
+  https://codepen.io/sandrina-p/pen/YzyOYRr
 */
