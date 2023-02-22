@@ -94,4 +94,6 @@ export default function Home(props) {
   https://dev.to/emmabostian/creating-a-custom-accessible-drop-down-3gmo
   https://css-tricks.com/striking-a-balance-between-native-and-custom-select-elements/
   https://codepen.io/sandrina-p/pen/YzyOYRr
+  https://towardsdev.com/how-to-create-an-accessible-custom-select-dropdown-in-react-9d9858415f10 - select in react
+  https://codepen.io/tcomdev/pen/WNXeqoG?editors=1010 - select in react
 */
