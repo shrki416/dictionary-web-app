@@ -1,3 +1,4 @@
+import Footer from "../components/Footer";
 import GlobalStyles from "../components/GlobalStyles";
 import Head from "next/head";
 import Header from "../components/Header";
@@ -5,7 +6,6 @@ import { Howl } from "howler";
 import Image from "next/image";
 import Link from "next/link";
 import MaxWidthWrapper from "../components/MaxWidthWrapper/MaxWidthWrapper";
-// import { WORD } from "../data";
 /*
   This is to fetch data from an API, when ready
 */
@@ -78,27 +78,7 @@ export default function Home({ words }) {
             );
           })}
         </main>
-        <footer>
-          <p>{sourceUrls.length > 1 ? "Sources" : "Source"}</p>
-          {sourceUrls.map((url) => {
-            const uniqueId = useId();
-            return (
-              <div key={uniqueId}>
-                <Link href={url}>
-                  {url}
-                  <span>
-                    <Image
-                      src="./images/icon-new-window.svg"
-                      alt="new window"
-                      width={12}
-                      height={12}
-                    />
-                  </span>
-                </Link>
-              </div>
-            );
-          })}
-        </footer>
+        <Footer sourceUrls={sourceUrls} />
       </MaxWidthWrapper>
     </>
   );
