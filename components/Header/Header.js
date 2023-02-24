@@ -1,7 +1,11 @@
 import Image from "next/image";
 import styled from "styled-components";
+import { useState } from "react";
 
 const Header = () => {
+  const [font, setFont] = useState("mono");
+
+  console.log({ font });
   return (
     <StyledHeader>
       <div>
@@ -15,11 +19,14 @@ const Header = () => {
       </div>
 
       <ThemeWrapper>
-        <label htmlFor="font-choice"></label>
-        <Select name="font-choice" id="font-choice">
+        <Select
+          name="font"
+          value={font}
+          onChange={(e) => setFont(e.target.value)}
+        >
           <option value="mono">Mono</option>
           <option value="serif">Serif</option>
-          <option value="sans-serif">Sans Serif</option>
+          <option value="sans-serif">Sans-serif</option>
         </Select>
 
         <ThemeSwitcher>
@@ -55,13 +62,8 @@ const ThemeWrapper = styled.div`
 `;
 
 const Select = styled.select`
-  /* align-self: end; */
   all: unset;
-
-  & [slot="option"] {
-    margin-top: 0.5rem;
-    border: 1px solid red;
-  }
+  cursor: pointer;
 `;
 
 const ThemeSwitcher = styled.div`
