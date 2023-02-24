@@ -10,10 +10,10 @@ import MaxWidthWrapper from "../components/MaxWidthWrapper/MaxWidthWrapper";
   This is to fetch data from an API, when ready
 */
 import { fetchWords } from "../lib/load-words";
+import { useId } from "react";
 
 export async function getStaticProps() {
-  const words = await fetchWords("run");
-  console.log(words);
+  const words = await fetchWords("keyboard");
   return {
     props: {
       words,
@@ -62,16 +62,16 @@ export default function Home({ words }) {
           />
 
           {meanings.map((meaning) => {
+            const uniqueId = useId();
             return (
-              <div key={meaning.partOfSpeech}>
+              <div key={uniqueId}>
                 <p>{meaning.partOfSpeech}</p>
+                <p>Meanings</p>
                 {meaning.definitions.map((definition) => {
                   return (
-                    <>
-                      <ul key={definition.definition}>
-                        <li>{definition.definition}</li>
-                      </ul>
-                    </>
+                    <ul key={definition.definition}>
+                      <li>{definition.definition}</li>
+                    </ul>
                   );
                 })}
               </div>
@@ -79,18 +79,25 @@ export default function Home({ words }) {
           })}
         </main>
         <footer>
-          <p>Source</p>
-          <Link href={sourceUrls[0]}>
-            {sourceUrls[0]}
-            <span>
-              <Image
-                src="./images/icon-new-window.svg"
-                width={15}
-                height={15}
-                alt="source link"
-              />
-            </span>
-          </Link>
+          <p>{sourceUrls.length > 1 ? "Sources" : "Source"}</p>
+          {sourceUrls.map((url) => {
+            const uniqueId = useId();
+            return (
+              <div key={uniqueId}>
+                <Link href={url}>
+                  {url}
+                  <span>
+                    <Image
+                      src="./images/icon-new-window.svg"
+                      alt="new window"
+                      width={12}
+                      height={12}
+                    />
+                  </span>
+                </Link>
+              </div>
+            );
+          })}
         </footer>
       </MaxWidthWrapper>
     </>
