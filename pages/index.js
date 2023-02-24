@@ -5,14 +5,14 @@ import { Howl } from "howler";
 import Image from "next/image";
 import Link from "next/link";
 import MaxWidthWrapper from "../components/MaxWidthWrapper/MaxWidthWrapper";
-import { WORD } from "../data";
+// import { WORD } from "../data";
 /*
   This is to fetch data from an API, when ready
 */
 import { fetchWords } from "../lib/load-words";
 
 export async function getStaticProps() {
-  const words = await fetchWords("keyboard");
+  const words = await fetchWords("hello");
   console.log(words);
   return {
     props: {
@@ -21,16 +21,21 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home(props) {
-  // console.log({ WORD });
+export default function Home({ words }) {
+  console.log(words);
+  const { word, meanings, phonetics, phonetic, sourceUrls } = words[0];
 
-  const word = props.words[0];
-  console.log(`🍏`, word);
-
-  const audioFile = WORD.phonetics[2].audio;
+  const audioFile = phonetics
+    .map((phonetic) => {
+      const { audio } = phonetic;
+      if (audio) {
+        return audio;
+      }
+    })
+    .filter((audio) => audio);
 
   const sound = new Howl({
-    src: [audioFile],
+    src: audioFile,
   });
 
   return (
@@ -46,8 +51,8 @@ export default function Home(props) {
         <Header />
         <main>
           <input type="search" name="" id="" />
-          <p>{WORD.word}</p>
-          <p>{WORD.phonetic}</p>
+          {/* <p>{WORD.word}</p>
+          <p>{WORD.phonetic}</p> */}
           <Image
             src="./images/icon-play.svg"
             width={50}
@@ -55,12 +60,8 @@ export default function Home(props) {
             onClick={() => sound.play()}
             alt="play button"
           />
-          {/* <audio controls src={audioFile}>
-            Your browser does not support the
-            <code>audio</code> element.
-          </audio> */}
         </main>
-        <footer>
+        {/* <footer>
           <p>Source</p>
           <Link href={WORD.sourceUrls[0]}>
             {WORD.sourceUrls[0]}
@@ -73,7 +74,7 @@ export default function Home(props) {
               />
             </span>
           </Link>
-        </footer>
+        </footer> */}
       </MaxWidthWrapper>
     </>
   );
