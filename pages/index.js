@@ -12,7 +12,7 @@ import MaxWidthWrapper from "../components/MaxWidthWrapper/MaxWidthWrapper";
 import { fetchWords } from "../lib/load-words";
 
 export async function getStaticProps() {
-  const words = await fetchWords("hello");
+  const words = await fetchWords("run");
   console.log(words);
   return {
     props: {
@@ -51,8 +51,8 @@ export default function Home({ words }) {
         <Header />
         <main>
           <input type="search" name="" id="" />
-          {/* <p>{WORD.word}</p>
-          <p>{WORD.phonetic}</p> */}
+          <p>{word}</p>
+          <p>{phonetic}</p>
           <Image
             src="./images/icon-play.svg"
             width={50}
@@ -60,11 +60,28 @@ export default function Home({ words }) {
             onClick={() => sound.play()}
             alt="play button"
           />
+
+          {meanings.map((meaning) => {
+            return (
+              <div key={meaning.partOfSpeech}>
+                <p>{meaning.partOfSpeech}</p>
+                {meaning.definitions.map((definition) => {
+                  return (
+                    <>
+                      <ul key={definition.definition}>
+                        <li>{definition.definition}</li>
+                      </ul>
+                    </>
+                  );
+                })}
+              </div>
+            );
+          })}
         </main>
-        {/* <footer>
+        <footer>
           <p>Source</p>
-          <Link href={WORD.sourceUrls[0]}>
-            {WORD.sourceUrls[0]}
+          <Link href={sourceUrls[0]}>
+            {sourceUrls[0]}
             <span>
               <Image
                 src="./images/icon-new-window.svg"
@@ -74,7 +91,7 @@ export default function Home({ words }) {
               />
             </span>
           </Link>
-        </footer> */}
+        </footer>
       </MaxWidthWrapper>
     </>
   );
