@@ -11,6 +11,7 @@ import Search from "../components/Search";
   This is to fetch data from an API, when ready
 */
 import { fetchWords } from "../lib/load-words";
+import playIcon from "../public/images/icon-play.svg";
 import { useId } from "react";
 
 export async function getStaticProps() {
@@ -55,26 +56,30 @@ export default function Home({ words }) {
           <p>{word}</p>
           <p>{phonetic}</p>
           <Image
-            src="./images/icon-play.svg"
-            width={50}
-            height={50}
+            src={playIcon}
             onClick={() => sound.play()}
             alt="play button"
           />
 
-          {meanings.map((meaning) => {
+          {meanings.map(({ partOfSpeech, definitions, synonyms }) => {
             const uniqueId = useId();
             return (
               <div key={uniqueId}>
-                <p>{meaning.partOfSpeech}</p>
+                <p>{partOfSpeech}</p>
                 <p>Meanings</p>
-                {meaning.definitions.map((definition) => {
+                {definitions.map(({ definition, example }) => {
                   return (
-                    <ul key={definition.definition}>
-                      <li>{definition.definition}</li>
+                    <ul key={definition}>
+                      <li>{definition}</li>
+                      <p>{example}</p>
                     </ul>
                   );
                 })}
+                {synonyms.length > 0 && (
+                  <p>
+                    Synonyms <span>{synonyms.join(", ")}</span>
+                  </p>
+                )}
               </div>
             );
           })}

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import logo from "../../public/images/logo.svg";
 import styled from "styled-components";
 import { useState } from "react";
 
@@ -9,13 +10,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <div>
-        <Image
-          src="./images/logo.svg"
-          width={28}
-          height={32}
-          alt="logo"
-          priority
-        />
+        <Image src={logo} alt="logo" priority />
       </div>
 
       <ThemeWrapper>
