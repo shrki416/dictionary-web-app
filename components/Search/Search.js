@@ -1,4 +1,5 @@
 import Image from "next/image";
+import searchIcon from "../../public/images/icon-search.svg";
 import styled from "styled-components";
 
 const Search = () => {
@@ -6,12 +7,7 @@ const Search = () => {
     <Wrapper>
       <Input type="text" />
       <Button>
-        <Image
-          src="./images/icon-search.svg"
-          alt="search"
-          width={24}
-          height={24}
-        />
+        <Image src={searchIcon} alt="search" />
       </Button>
     </Wrapper>
   );
