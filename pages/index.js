@@ -2,16 +2,10 @@ import Footer from "../components/Footer";
 import GlobalStyles from "../components/GlobalStyles";
 import Head from "next/head";
 import Header from "../components/Header";
-import { Howl } from "howler";
-import Image from "next/image";
-import Link from "next/link";
 import MaxWidthWrapper from "../components/MaxWidthWrapper/MaxWidthWrapper";
 import Search from "../components/Search";
-/*
-  This is to fetch data from an API, when ready
-*/
+import Word from "../components/Word";
 import { fetchWords } from "../lib/load-words";
-import playIcon from "../public/images/icon-play.svg";
 import { useId } from "react";
 
 export async function getStaticProps() {
@@ -24,21 +18,8 @@ export async function getStaticProps() {
 }
 
 export default function Home({ words }) {
-  console.log(words);
-  const { word, meanings, phonetics, phonetic, sourceUrls } = words[0];
-
-  const audioFile = phonetics
-    .map((phonetic) => {
-      const { audio } = phonetic;
-      if (audio) {
-        return audio;
-      }
-    })
-    .filter((audio) => audio);
-
-  const sound = new Howl({
-    src: audioFile,
-  });
+  // console.log(words);
+  const { meanings, sourceUrls } = words[0];
 
   return (
     <>
@@ -53,13 +34,7 @@ export default function Home({ words }) {
         <Header />
         <main>
           <Search />
-          <p>{word}</p>
-          <p>{phonetic}</p>
-          <Image
-            src={playIcon}
-            onClick={() => sound.play()}
-            alt="play button"
-          />
+          <Word {...words} />
 
           {meanings.map(({ partOfSpeech, definitions, synonyms }) => {
             const uniqueId = useId();
