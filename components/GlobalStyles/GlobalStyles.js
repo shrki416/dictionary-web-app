@@ -1,12 +1,6 @@
-import { COLORS, FAMILIES, WEIGHTS } from "../../constants";
+import { COLORS, FAMILIES } from "../../constants";
 
-import { IBM_PLEX_SANS } from "@next/font/google";
 import { createGlobalStyle } from "styled-components";
-
-const ibmSans = IBM_PLEX_SANS({
-  weight: "700",
-  subsets: ["latin"],
-});
 
 const GlobalStyles = createGlobalStyle`
 :root {
@@ -23,14 +17,8 @@ const GlobalStyles = createGlobalStyle`
   --secondary: ${COLORS.secondary};
 
   --ff-mono: ${FAMILIES.mono};
-  --ff-serif: ${FAMILIES.serif};
   --ff-sans-serif: ${FAMILIES.sansSerif};
-  --ff-ibm-sans: ${ibmSans};
-
-  -fw-normal: ${WEIGHTS.normal};
-  -fw-bold: ${WEIGHTS.bold};
-  
-  --reach-dialog: 1;
+  --ff-serif: ${FAMILIES.serif};
 }
 
 /*
@@ -59,7 +47,6 @@ html, body {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  font-family: var(--ff-ibm-sans);
 }
 /*
   6. Improve media defaults

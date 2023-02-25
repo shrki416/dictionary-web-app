@@ -1,5 +1,19 @@
+import localFont from "@next/font/local";
+
+const inconsolata = localFont({
+  src: "./public/fonts/inconsolata/inconsolata-variableFont.ttf",
+});
+
+const inter = localFont({
+  src: "./public/fonts/inter/inter-variableFont.ttf",
+});
+
+const lora = localFont({
+  src: "./public/fonts/lora/lora-variableFont.ttf",
+});
+
 export const COLORS = {
-  white: `hsl(0, 0%, 100%)`,
+  white: `hsl(0 0% 100%)`,
   gray: {
     100: `hsl(0 0% 98%)`,
     200: `hsl(0 0% 91%)`,
@@ -34,7 +48,7 @@ export const QUERIES = {
 };
 
 export const FAMILIES = {
-  mono: `Inconsolata`,
-  serif: `Lora, serif`,
-  sansSerif: `Inter, sans-serif`,
+  mono: inconsolata.style.fontFamily,
+  serif: lora.style.fontFamily,
+  sansSerif: inter.style.fontFamily,
 };
