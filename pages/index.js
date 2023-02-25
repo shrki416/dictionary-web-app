@@ -91,10 +91,8 @@ export default function Home({ words }) {
 }
 
 /* 
-  using SVG as components imports:
-  https://www.youtube.com/watch?v=9tJTEGG0t-M
+resources:
 
-  Other resources:
   - This is to fetch data from an API
   https://medium.com/@kusuma844/easiest-way-for-next-js-to-fetch-external-api-for-displaying-data-2ebabbdd3c9e
 
@@ -107,4 +105,8 @@ export default function Home({ words }) {
   https://codepen.io/sandrina-p/pen/YzyOYRr
   https://towardsdev.com/how-to-create-an-accessible-custom-select-dropdown-in-react-9d9858415f10 - select in react
   https://codepen.io/tcomdev/pen/WNXeqoG?editors=1010 - select in react
+
+  font optimization in next.js:
+  https://blog.logrocket.com/next-js-font-optimization/
+  https://web.dev/variable-fonts/
 */
