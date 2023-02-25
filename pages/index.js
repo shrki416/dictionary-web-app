@@ -6,6 +6,7 @@ import { Howl } from "howler";
 import Image from "next/image";
 import Link from "next/link";
 import MaxWidthWrapper from "../components/MaxWidthWrapper/MaxWidthWrapper";
+import Search from "../components/Search";
 /*
   This is to fetch data from an API, when ready
 */
@@ -50,7 +51,7 @@ export default function Home({ words }) {
 
         <Header />
         <main>
-          <input type="search" name="" id="" />
+          <Search />
           <p>{word}</p>
           <p>{phonetic}</p>
           <Image

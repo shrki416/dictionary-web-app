@@ -12,6 +12,7 @@ const GlobalStyles = createGlobalStyle`
   --gray-500: ${COLORS.gray[500]};
   --gray-600: ${COLORS.gray[600]};
   --gray-700: ${COLORS.gray[700]};
+  
   --primary: ${COLORS.primary};
   --secondary: ${COLORS.secondary};
 
