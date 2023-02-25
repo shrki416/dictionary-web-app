@@ -6,7 +6,6 @@ import { useState } from "react";
 const Header = () => {
   const [font, setFont] = useState("mono");
 
-  console.log({ font });
   return (
     <StyledHeader>
       <div>
@@ -50,7 +49,6 @@ const StyledHeader = styled.header`
 `;
 
 const ThemeWrapper = styled.div`
-  /* border: 1px solid var(--gray-200); */
   display: flex;
   align-items: center;
   gap: 1rem;

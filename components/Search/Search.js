@@ -13,7 +13,7 @@ const Search = () => {
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
