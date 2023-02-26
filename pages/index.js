@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import Definition from "../components/Definition";
 import Footer from "../components/Footer";
 import GlobalStyles from "../components/GlobalStyles";
@@ -8,17 +10,38 @@ import Search from "../components/Search";
 import Word from "../components/Word";
 import { fetchWords } from "../lib/load-words";
 
-export async function getStaticProps() {
-  const words = await fetchWords("keyboard");
-  return {
-    props: {
-      words,
-    },
-  };
-}
+export default function Home() {
+  const [search, setSearch] = useState("");
+  const [words, setWords] = useState("");
 
-export default function Home({ words }) {
-  const { meanings, sourceUrls } = words[0];
+  useEffect(() => {
+    const fetchKeyboard = async () => {
+      const data = await fetchWords("keyboard");
+      setWords(data[0]);
+    };
+
+    fetchKeyboard();
+  }, []);
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (search === "") return;
+
+    try {
+      const data = await fetchWords(search);
+      setWords(data[0]);
+      setSearch("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const { word, phonetic, phonetics, meanings, sourceUrls } = words;
 
   return (
     <>
@@ -32,8 +55,8 @@ export default function Home({ words }) {
 
         <Header />
         <main>
-          <Search />
-          <Word {...words} />
+          <Search change={handleChange} value={search} submit={handleSubmit} />
+          <Word word={word} phonetic={phonetic} phonetics={phonetics} />
           <Definition meanings={meanings} />
         </main>
         <Footer sourceUrls={sourceUrls} />

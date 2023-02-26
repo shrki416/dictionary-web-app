@@ -2,10 +2,10 @@ import Image from "next/image";
 import searchIcon from "../../public/images/icon-search.svg";
 import styled from "styled-components";
 
-const Search = () => {
+const Search = ({ change, value, submit }) => {
   return (
-    <Wrapper>
-      <Input type="text" />
+    <Wrapper onSubmit={submit}>
+      <Input type="text" value={value} onChange={change} />
       <Button>
         <Image src={searchIcon} alt="search" />
       </Button>

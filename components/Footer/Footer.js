@@ -2,18 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import newWindowIcon from "../../public/images/icon-new-window.svg";
 import styled from "styled-components";
-import { useId } from "react";
 
 const Footer = ({ sourceUrls }) => {
   return (
     <Wrapper>
       <SourceHeader>
-        {sourceUrls.length > 1 ? "Sources" : "Source"}
+        {sourceUrls?.length > 1 ? "Sources" : "Source"}
       </SourceHeader>
-      {sourceUrls.map((url) => {
-        const uniqueId = useId();
+      {sourceUrls?.map((url) => {
         return (
-          <div key={uniqueId}>
+          <div key={url}>
             <Link href={url}>
               {url}
               <span>

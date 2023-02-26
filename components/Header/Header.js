@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <div>
-        <Image src={logo} alt="logo" priority />
+        <Image src={logo} alt="logo" />
       </div>
 
       <ThemeWrapper>

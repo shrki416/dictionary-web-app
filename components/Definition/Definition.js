@@ -1,11 +1,9 @@
 import styled from "styled-components";
-import { useId } from "react";
 
 const Definition = ({ meanings }) => {
-  return meanings.map(({ partOfSpeech, definitions, synonyms }) => {
-    const uniqueId = useId();
+  return meanings?.map(({ partOfSpeech, definitions, synonyms }) => {
     return (
-      <div key={uniqueId}>
+      <div key={definitions}>
         <PartOfSpeech>{partOfSpeech}</PartOfSpeech>
         <Meaning>Meanings</Meaning>
         <List>
