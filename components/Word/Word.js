@@ -3,12 +3,10 @@ import Image from "next/image";
 import playIcon from "../../public/images/icon-play.svg";
 import styled from "styled-components";
 
-const Word = (props) => {
-  const { word, phonetics, phonetic } = props[0];
-
+const Word = ({ word, phonetic, phonetics }) => {
   const audioFile = phonetics
-    .map(({ audio }) => {
-      if (audio) {
+    ?.map(({ audio }) => {
+      if (audio.endsWith("-us.mp3")) {
         return audio;
       }
     })
@@ -16,6 +14,8 @@ const Word = (props) => {
 
   const sound = new Howl({
     src: audioFile,
+    autoplay: false,
+    loop: false,
   });
 
   return (
@@ -24,7 +24,9 @@ const Word = (props) => {
         {word}
         <Phonetic>{phonetic}</Phonetic>
       </h1>
-      <Image src={playIcon} onClick={() => sound.play()} alt="play button" />
+      {audioFile?.length > 0 && (
+        <Image src={playIcon} onClick={() => sound.play()} alt="play button" />
+      )}
     </Wrapper>
   );
 };
