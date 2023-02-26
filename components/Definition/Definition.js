@@ -34,7 +34,7 @@ const PartOfSpeech = styled.p`
   font-style: italic;
   font-size: ${18 / 16}rem;
   line-height: ${24 / 16}rem;
-  color: var(--gray-500);
+  color: ${({ theme }) => theme.text};
 
   &::after {
     content: "";

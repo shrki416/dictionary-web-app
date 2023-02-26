@@ -3,13 +3,13 @@ import logo from "../../public/images/logo.svg";
 import styled from "styled-components";
 import { useState } from "react";
 
-const Header = () => {
+const Header = ({ toggleTheme }) => {
   const [font, setFont] = useState("mono");
 
   return (
     <StyledHeader>
       <div>
-        <Image src={logo} alt="logo" />
+        <Image src={logo} alt="logo" priority />
       </div>
 
       <ThemeWrapper>
@@ -26,7 +26,7 @@ const Header = () => {
         <ThemeSwitcher>
           <ToggleLabel htmlFor="toggle">
             <VisuallyHidden type="checkbox" id="toggle" />
-            <ToggleSwitch />
+            <ToggleSwitch onClick={toggleTheme} />
           </ToggleLabel>
 
           <Image
@@ -55,7 +55,7 @@ const ThemeWrapper = styled.div`
 `;
 
 const Select = styled.select`
-  all: unset;
+  /* all: unset; */
   cursor: pointer;
 `;
 
