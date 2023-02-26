@@ -1,3 +1,4 @@
+import Definition from "../components/Definition";
 import Footer from "../components/Footer";
 import GlobalStyles from "../components/GlobalStyles";
 import Head from "next/head";
@@ -6,7 +7,6 @@ import MaxWidthWrapper from "../components/MaxWidthWrapper/MaxWidthWrapper";
 import Search from "../components/Search";
 import Word from "../components/Word";
 import { fetchWords } from "../lib/load-words";
-import { useId } from "react";
 
 export async function getStaticProps() {
   const words = await fetchWords("keyboard");
@@ -18,7 +18,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ words }) {
-  // console.log(words);
   const { meanings, sourceUrls } = words[0];
 
   return (
@@ -35,29 +34,7 @@ export default function Home({ words }) {
         <main>
           <Search />
           <Word {...words} />
-
-          {meanings.map(({ partOfSpeech, definitions, synonyms }) => {
-            const uniqueId = useId();
-            return (
-              <div key={uniqueId}>
-                <p>{partOfSpeech}</p>
-                <p>Meanings</p>
-                {definitions.map(({ definition, example }) => {
-                  return (
-                    <ul key={definition}>
-                      <li>{definition}</li>
-                      <p>{example}</p>
-                    </ul>
-                  );
-                })}
-                {synonyms.length > 0 && (
-                  <p>
-                    Synonyms <span>{synonyms.join(", ")}</span>
-                  </p>
-                )}
-              </div>
-            );
-          })}
+          <Definition meanings={meanings} />
         </main>
         <Footer sourceUrls={sourceUrls} />
       </MaxWidthWrapper>
@@ -68,20 +45,23 @@ export default function Home({ words }) {
 /* 
 resources:
 
-  - This is to fetch data from an API
+  * This is to fetch data from an API
   https://medium.com/@kusuma844/easiest-way-for-next-js-to-fetch-external-api-for-displaying-data-2ebabbdd3c9e
 
-  Darkmode resource using styled-components:
+  * Darkmode resource using styled-components:
   https://medium.com/bigpanda-engineering/dark-theme-with-styled-components-a573dd898e2a
 
-  Select accessibility styles:
+  * Select accessibility styles:
   https://dev.to/emmabostian/creating-a-custom-accessible-drop-down-3gmo
   https://css-tricks.com/striking-a-balance-between-native-and-custom-select-elements/
   https://codepen.io/sandrina-p/pen/YzyOYRr
   https://towardsdev.com/how-to-create-an-accessible-custom-select-dropdown-in-react-9d9858415f10 - select in react
   https://codepen.io/tcomdev/pen/WNXeqoG?editors=1010 - select in react
 
-  font optimization in next.js:
+  * font optimization in next.js:
   https://blog.logrocket.com/next-js-font-optimization/
   https://web.dev/variable-fonts/
+
+  * line after text:
+  https://stackoverflow.com/questions/38202019/css-horizontal-line-on-one-side-of-text
 */
