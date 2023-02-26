@@ -1,3 +1,4 @@
+import { dark, light } from "../lib/theme";
 import { useEffect, useState } from "react";
 
 import Definition from "../components/Definition";
@@ -7,12 +8,15 @@ import Head from "next/head";
 import Header from "../components/Header";
 import MaxWidthWrapper from "../components/MaxWidthWrapper/MaxWidthWrapper";
 import Search from "../components/Search";
+import { ThemeProvider } from "styled-components";
 import Word from "../components/Word";
 import { fetchWords } from "../lib/load-words";
+import { useDarkMode } from "../lib/useDarkMode";
 
 export default function Home() {
   const [search, setSearch] = useState("");
   const [words, setWords] = useState("");
+  const [theme, toggleTheme] = useDarkMode();
 
   useEffect(() => {
     const fetchKeyboard = async () => {
@@ -44,7 +48,7 @@ export default function Home() {
   const { word, phonetic, phonetics, meanings, sourceUrls } = words;
 
   return (
-    <>
+    <ThemeProvider theme={theme === "light" ? light : dark}>
       <GlobalStyles />
       <MaxWidthWrapper>
         <Head>
@@ -53,7 +57,7 @@ export default function Home() {
           <link rel="icon" href="/images/favicon.ico" />
         </Head>
 
-        <Header />
+        <Header theme={theme} toggleTheme={toggleTheme} />
         <main>
           <Search change={handleChange} value={search} submit={handleSubmit} />
           <Word word={word} phonetic={phonetic} phonetics={phonetics} />
@@ -61,7 +65,7 @@ export default function Home() {
         </main>
         <Footer sourceUrls={sourceUrls} />
       </MaxWidthWrapper>
-    </>
+    </ThemeProvider>
   );
 }
 

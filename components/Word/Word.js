@@ -20,10 +20,10 @@ const Word = ({ word, phonetic, phonetics }) => {
 
   return (
     <Wrapper>
-      <h1>
+      <Header>
         {word}
         <Phonetic>{phonetic}</Phonetic>
-      </h1>
+      </Header>
       {audioFile?.length > 0 && (
         <Image src={playIcon} onClick={() => sound.play()} alt="play button" />
       )}
@@ -44,6 +44,10 @@ const Wrapper = styled.div`
     width: ${48 / 16}rem;
     height: ${48 / 16}rem;
   }
+`;
+
+const Header = styled.h1`
+  color: ${({ theme }) => theme.text};
 `;
 
 const Phonetic = styled.span`
