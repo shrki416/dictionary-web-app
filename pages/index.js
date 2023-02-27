@@ -58,4 +58,7 @@ resources:
 
   * line after text:
   https://stackoverflow.com/questions/38202019/css-horizontal-line-on-one-side-of-text
+
+  * supress audio warning for AudioContext:
+  https://stackoverflow.com/questions/70127003/howler-js-react-audiocontext-console-warning
 */

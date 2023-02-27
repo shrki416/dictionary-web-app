@@ -10,7 +10,7 @@ const Header = ({ theme, toggleTheme }) => {
   return (
     <StyledHeader>
       <div>
-        <Image src={logo} alt="logo" priority />
+        <Image src={logo} alt="logo" priority={true} />
       </div>
 
       <ThemeWrapper>
@@ -30,7 +30,7 @@ const Header = ({ theme, toggleTheme }) => {
             <ToggleSwitch onClick={toggleTheme} />
           </ToggleLabel>
 
-          <Image src={moon} width={20} height={20} alt="icon" priority />
+          <Image src={moon} alt="icon" priority={true} />
         </ThemeSwitcher>
       </ThemeWrapper>
     </StyledHeader>
