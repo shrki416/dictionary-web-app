@@ -1,9 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import WordContext from "../../context/WordContext";
 import newWindowIcon from "../../public/images/icon-new-window.svg";
 import styled from "styled-components";
+import { useContext } from "react";
 
-const Footer = ({ sourceUrls }) => {
+const Footer = () => {
+  const { words } = useContext(WordContext);
+
+  const { sourceUrls } = words;
+
   return (
     <Wrapper>
       <SourceHeader>

@@ -1,9 +1,15 @@
 import { Howl } from "howler";
 import Image from "next/image";
+import WordContext from "../../context/WordContext";
 import playIcon from "../../public/images/icon-play.svg";
 import styled from "styled-components";
+import { useContext } from "react";
 
-const Word = ({ word, phonetic, phonetics }) => {
+const Word = () => {
+  const { words } = useContext(WordContext);
+
+  const { word, phonetic, phonetics } = words;
+
   const audioFile = phonetics
     ?.map(({ audio }) => {
       if (audio.endsWith("-us.mp3")) {
@@ -25,7 +31,13 @@ const Word = ({ word, phonetic, phonetics }) => {
         <Phonetic>{phonetic}</Phonetic>
       </Header>
       {audioFile?.length > 0 && (
-        <Image src={playIcon} onClick={() => sound.play()} alt="play button" />
+        <Image
+          src={playIcon}
+          onClick={() => sound.play()}
+          alt="play button"
+          width="auto"
+          height="auto"
+        />
       )}
     </Wrapper>
   );

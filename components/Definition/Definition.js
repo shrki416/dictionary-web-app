@@ -1,9 +1,14 @@
+import WordContext from "../../context/WordContext";
 import styled from "styled-components";
+import { useContext } from "react";
 
-const Definition = ({ meanings }) => {
+const Definition = () => {
+  const { words } = useContext(WordContext);
+  const { meanings } = words;
+
   return meanings?.map(({ partOfSpeech, definitions, synonyms }) => {
     return (
-      <div key={definitions}>
+      <section key={definitions}>
         <PartOfSpeech>{partOfSpeech}</PartOfSpeech>
         <Meaning>Meanings</Meaning>
         <List>
@@ -21,7 +26,7 @@ const Definition = ({ meanings }) => {
             Synonyms <span>{synonyms.join(", ")}</span>
           </p>
         )}
-      </div>
+      </section>
     );
   });
 };
