@@ -1,9 +1,10 @@
 import Image from "next/image";
 import logo from "../../public/images/logo.svg";
+import moon from "../../public/images/icon-moon.svg";
 import styled from "styled-components";
 import { useState } from "react";
 
-const Header = ({ toggleTheme }) => {
+const Header = ({ theme, toggleTheme }) => {
   const [font, setFont] = useState("mono");
 
   return (
@@ -29,13 +30,7 @@ const Header = ({ toggleTheme }) => {
             <ToggleSwitch onClick={toggleTheme} />
           </ToggleLabel>
 
-          <Image
-            src="./images/icon-moon.svg"
-            width={20}
-            height={20}
-            alt="icon"
-            priority
-          />
+          <Image src={moon} width={20} height={20} alt="icon" priority />
         </ThemeSwitcher>
       </ThemeWrapper>
     </StyledHeader>

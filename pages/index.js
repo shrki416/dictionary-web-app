@@ -1,5 +1,4 @@
 import { dark, light } from "../lib/theme";
-import { useEffect, useState } from "react";
 
 import Definition from "../components/Definition";
 import Footer from "../components/Footer";
@@ -10,42 +9,10 @@ import MaxWidthWrapper from "../components/MaxWidthWrapper/MaxWidthWrapper";
 import Search from "../components/Search";
 import { ThemeProvider } from "styled-components";
 import Word from "../components/Word";
-import { fetchWords } from "../lib/load-words";
 import { useDarkMode } from "../lib/useDarkMode";
 
 export default function Home() {
-  const [search, setSearch] = useState("");
-  const [words, setWords] = useState("");
   const [theme, toggleTheme] = useDarkMode();
-
-  useEffect(() => {
-    const fetchKeyboard = async () => {
-      const data = await fetchWords("keyboard");
-      setWords(data[0]);
-    };
-
-    fetchKeyboard();
-  }, []);
-
-  const handleChange = (e) => {
-    setSearch(e.target.value);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (search === "") return;
-
-    try {
-      const data = await fetchWords(search);
-      setWords(data[0]);
-      setSearch("");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const { word, phonetic, phonetics, meanings, sourceUrls } = words;
 
   return (
     <ThemeProvider theme={theme === "light" ? light : dark}>
@@ -59,11 +26,11 @@ export default function Home() {
 
         <Header theme={theme} toggleTheme={toggleTheme} />
         <main>
-          <Search change={handleChange} value={search} submit={handleSubmit} />
-          <Word word={word} phonetic={phonetic} phonetics={phonetics} />
-          <Definition meanings={meanings} />
+          <Search />
+          <Word />
+          <Definition />
         </main>
-        <Footer sourceUrls={sourceUrls} />
+        <Footer />
       </MaxWidthWrapper>
     </ThemeProvider>
   );

@@ -1,11 +1,38 @@
+import { useContext, useState } from "react";
+
 import Image from "next/image";
+import WordContext from "../../context/WordContext";
+import { fetchWords } from "../../lib/load-words";
 import searchIcon from "../../public/images/icon-search.svg";
 import styled from "styled-components";
 
-const Search = ({ change, value, submit }) => {
+const Search = () => {
+  const [search, setSearch] = useState("");
+
+  const { setWords } = useContext(WordContext);
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (search === "") return;
+
+    try {
+      const data = await fetchWords(search);
+      setWords(data[0]);
+      setSearch("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <Wrapper onSubmit={submit}>
-      <Input type="text" value={value} onChange={change} />
+    <Wrapper onSubmit={handleSubmit}>
+      {/* TODO: insert label, and visually hide it */}
+      <Input type="text" value={search} onChange={handleChange} />
       <Button>
         <Image src={searchIcon} alt="search" />
       </Button>
