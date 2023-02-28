@@ -24,7 +24,7 @@ export const COLORS = {
     700: `hsl(0 0% 2%)`,
   },
   primary: `hsl(274 82% 60%)`,
-  secondary: `hsl(0 100% 66%)`,
+  error: `hsl(0 100% 66%)`,
 };
 
 export const WEIGHTS = {

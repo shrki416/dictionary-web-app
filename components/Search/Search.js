@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 
+import SearchIcon from "./SearchIcon";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 import WordContext from "../../context/WordContext";
 import { fetchWords } from "../../lib/load-words";
@@ -7,52 +8,86 @@ import styled from "styled-components";
 
 const Search = () => {
   const [search, setSearch] = useState("");
+  const [error, setError] = useState(false);
 
   const { setWords } = useContext(WordContext);
 
-  const handleChange = (e) => {
+  const onFocus = () => {
+    setError(false);
+    setSearch("");
+  };
+
+  const onChange = (e) => {
     setSearch(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
-    if (search === "") return;
+    if (search === "") {
+      setError(true);
+      return;
+    }
 
     try {
       const data = await fetchWords(search);
-      setWords(data[0]);
-      setSearch("");
+      if (data[0]) {
+        setWords(data[0]);
+      } else {
+        setWords(data);
+      }
     } catch (error) {
       console.log(error);
     }
   };
 
+  const changeOutline = () => {
+    if (error) {
+      return "var(--error)";
+    }
+
+    if (search) {
+      return "var(--primary)";
+    }
+
+    if (!search || !error) {
+      return "hsl(0 0% 98% 0)";
+    }
+  };
+
   return (
-    <Wrapper onSubmit={handleSubmit}>
-      <Input type="text" value={search} onChange={handleChange} />
-      <Button>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="18"
-          height="18"
-          viewBox="0 0 18 18"
-        >
-          <path
-            fill="none"
-            stroke="#A445ED"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="1.5"
-            d="m12.663 12.663 3.887 3.887M1 7.664a6.665 6.665 0 1 0 13.33 0 6.665 6.665 0 0 0-13.33 0Z"
+    <>
+      <Wrapper outline={changeOutline}>
+        <VisuallyHidden>
+          <label htmlFor="search">Search for any word:</label>
+        </VisuallyHidden>
+        <Form onSubmit={onSubmit}>
+          <Input
+            type="text"
+            value={search}
+            id="search"
+            onChange={onChange}
+            onFocus={onFocus}
+            placeholder="Search for any word..."
           />
-        </svg>
-      </Button>
-    </Wrapper>
+          <Button>
+            <SearchIcon />
+          </Button>
+        </Form>
+      </Wrapper>
+      {error && (
+        <p style={{ color: `var(--error)` }}>Whoops, can't be empty...</p>
+      )}
+    </>
   );
 };
 
-const Wrapper = styled.form`
+const Wrapper = styled.div`
+  border-radius: 1rem;
+  outline: 1px solid ${(props) => props.outline};
+`;
+
+const Form = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
