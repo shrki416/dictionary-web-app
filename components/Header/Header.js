@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 
-import Image from "next/image";
-import logo from "../../public/images/logo.svg";
-import moon from "../../public/images/icon-moon.svg";
+import Logo from "./Logo";
+import MoonIcon from "./MoonIcon";
 import styled from "styled-components";
 
 const Header = ({ theme, toggleTheme }) => {
@@ -15,7 +14,7 @@ const Header = ({ theme, toggleTheme }) => {
   return (
     <StyledHeader>
       <div>
-        <Image src={logo} alt="logo" priority={true} />
+        <Logo />
       </div>
 
       <ThemeWrapper>
@@ -35,7 +34,7 @@ const Header = ({ theme, toggleTheme }) => {
             <ToggleSwitch onClick={toggleTheme} />
           </ToggleLabel>
 
-          <Image src={moon} alt="icon" priority={true} />
+          <MoonIcon theme={theme} />
         </ThemeSwitcher>
       </ThemeWrapper>
     </StyledHeader>

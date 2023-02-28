@@ -14,7 +14,7 @@ const GlobalStyles = createGlobalStyle`
   --gray-700: ${COLORS.gray[700]};
   
   --primary: ${COLORS.primary};
-  --secondary: ${COLORS.secondary};
+  --error: ${COLORS.error};
 
   --ff-mono: ${FAMILIES.mono};
   --ff-sans-serif: ${FAMILIES.sansSerif};

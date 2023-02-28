@@ -29,8 +29,8 @@ export default function Home() {
           <Search />
           <Word />
           <Definition />
+          <Footer />
         </main>
-        <Footer />
       </MaxWidthWrapper>
     </ThemeProvider>
   );

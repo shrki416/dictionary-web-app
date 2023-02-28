@@ -12,7 +12,6 @@ export function WordProvider({ children }) {
       const data = await fetchWords("keyboard");
       setWords(data[0]);
     };
-
     fetchKeyboard();
   }, []);
 
