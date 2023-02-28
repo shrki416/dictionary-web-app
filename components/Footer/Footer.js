@@ -44,7 +44,7 @@ const Wrapper = styled.footer`
 
   & a {
     font-size: var(--font-size);
-    color: var(--gray-500);
+    color: ${({ theme }) => theme.body};
     margin-top: 0.5rem;
     cursor: pointer;
   }
