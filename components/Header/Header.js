@@ -1,11 +1,16 @@
+import { useEffect, useState } from "react";
+
 import Image from "next/image";
 import logo from "../../public/images/logo.svg";
 import moon from "../../public/images/icon-moon.svg";
 import styled from "styled-components";
-import { useState } from "react";
 
 const Header = ({ theme, toggleTheme }) => {
   const [font, setFont] = useState("mono");
+
+  useEffect(() => {
+    document.body.style.fontFamily = `var(--ff-${font})`;
+  }, [font]);
 
   return (
     <StyledHeader>

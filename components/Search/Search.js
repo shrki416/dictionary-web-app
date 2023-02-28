@@ -1,9 +1,8 @@
 import { useContext, useState } from "react";
 
-import Image from "next/image";
+import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 import WordContext from "../../context/WordContext";
 import { fetchWords } from "../../lib/load-words";
-import searchIcon from "../../public/images/icon-search.svg";
 import styled from "styled-components";
 
 const Search = () => {
@@ -31,7 +30,6 @@ const Search = () => {
 
   return (
     <Wrapper onSubmit={handleSubmit}>
-      {/* TODO: insert label, and visually hide it */}
       <Input type="text" value={search} onChange={handleChange} />
       <Button>
         <svg
@@ -49,7 +47,6 @@ const Search = () => {
             d="m12.663 12.663 3.887 3.887M1 7.664a6.665 6.665 0 1 0 13.33 0 6.665 6.665 0 0 0-13.33 0Z"
           />
         </svg>
-        {/* <Image src={searchIcon} alt="search" priority={true} /> */}
       </Button>
     </Wrapper>
   );

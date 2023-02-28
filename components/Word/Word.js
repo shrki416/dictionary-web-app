@@ -67,7 +67,7 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.h1`
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.body};
 `;
 
 const Phonetic = styled.span`

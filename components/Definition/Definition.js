@@ -15,16 +15,16 @@ const Definition = () => {
           {definitions.map(({ definition, example }) => {
             return (
               <ListItem key={definition}>
-                <p>{definition}</p>
-                <p>{example}</p>
+                <DefinitionBody>{definition}</DefinitionBody>
+                <Example>{example && `"${example}"`}</Example>
               </ListItem>
             );
           })}
         </List>
         {synonyms.length > 0 && (
-          <p>
+          <Synonyms>
             Synonyms <span>{synonyms.join(", ")}</span>
-          </p>
+          </Synonyms>
         )}
       </section>
     );
@@ -39,7 +39,7 @@ const PartOfSpeech = styled.p`
   font-style: italic;
   font-size: ${18 / 16}rem;
   line-height: ${24 / 16}rem;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.body};
 
   &::after {
     content: "";
@@ -66,6 +66,27 @@ const ListItem = styled.li`
 
   &::marker {
     color: var(--primary);
+  }
+`;
+
+const DefinitionBody = styled.p`
+  color: ${({ theme }) => theme.body};
+  margin-bottom: 8px;
+`;
+
+const Example = styled.p`
+  color: var(--gray-300);
+`;
+
+const Synonyms = styled.p`
+  font-size: ${20 / 16}rem;
+  color: var(--gray-300);
+  line-height: ${24 / 16}rem;
+
+  & span {
+    color: var(--primary);
+    line-height: ${24 / 16}rem;
+    margin-left: 1.5rem;
   }
 `;
 
