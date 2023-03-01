@@ -9,10 +9,22 @@ import MaxWidthWrapper from "../components/MaxWidthWrapper/MaxWidthWrapper";
 import Search from "../components/Search";
 import { ThemeProvider } from "styled-components";
 import Word from "../components/Word";
+import WordContext from "../context/WordContext";
+import { useContext } from "react";
 import { useDarkMode } from "../lib/useDarkMode";
 
 export default function Home() {
   const [theme, toggleTheme] = useDarkMode();
+
+  const { words } = useContext(WordContext);
+
+  // let error = false;
+
+  // if (words.title && words.message && words.resolution) {
+  //   error = true;
+  // } else {
+  //   error = false;
+  // }
 
   return (
     <ThemeProvider theme={theme === "light" ? light : dark}>
@@ -25,12 +37,22 @@ export default function Home() {
         </Head>
 
         <Header theme={theme} toggleTheme={toggleTheme} />
-        <main>
-          <Search />
-          <Word />
-          <Definition />
-          <Footer />
-        </main>
+
+        <Search />
+        {!words.title ? (
+          <main>
+            <Word />
+            <Definition />
+            <Footer />
+          </main>
+        ) : (
+          <div>
+            <div>😕</div>
+            <h2>{words.title}</h2>
+            <p>{words.message}</p>
+            <p>{words.resolution}</p>
+          </div>
+        )}
       </MaxWidthWrapper>
     </ThemeProvider>
   );
