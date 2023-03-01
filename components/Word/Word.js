@@ -69,7 +69,7 @@ const Wrapper = styled.div`
     fill: var(--white);
   }
 
-  & svg circle:hover {
+  & svg:hover circle {
     opacity: 1;
   }
 `;
