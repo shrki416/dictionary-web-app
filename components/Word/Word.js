@@ -64,6 +64,14 @@ const Wrapper = styled.div`
     width: ${48 / 16}rem;
     height: ${48 / 16}rem;
   }
+
+  & svg:hover path {
+    fill: var(--white);
+  }
+
+  & svg circle:hover {
+    opacity: 1;
+  }
 `;
 
 const Header = styled.h1`
