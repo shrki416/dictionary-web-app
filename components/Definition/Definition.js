@@ -1,12 +1,28 @@
 import WordContext from "../../context/WordContext";
+import { fetchWords } from "../../lib/load-words";
 import styled from "styled-components";
 import { useContext } from "react";
 
 const Definition = () => {
-  const { words } = useContext(WordContext);
+  const { words, setWords } = useContext(WordContext);
   const { meanings } = words;
 
+  async function getWordDefinition(word) {
+    try {
+      const data = await fetchWords(word);
+      if (data[0]) {
+        setWords(data[0]);
+      } else {
+        setWords(data);
+      }
+    } catch (error) {
+      console.error(error);
+      console.log(error);
+    }
+  }
+
   return meanings?.map(({ partOfSpeech, definitions, synonyms }) => {
+    console.log(synonyms);
     return (
       <section key={definitions}>
         <PartOfSpeech>{partOfSpeech}</PartOfSpeech>
@@ -23,7 +39,14 @@ const Definition = () => {
         </List>
         {synonyms.length > 0 && (
           <Synonyms>
-            Synonyms <span>{synonyms.join(", ")}</span>
+            Synonyms{" "}
+            {synonyms.map((word) => {
+              return (
+                <span key={word} onClick={() => getWordDefinition(word)}>
+                  {word}
+                </span>
+              );
+            })}
           </Synonyms>
         )}
       </section>
@@ -87,6 +110,12 @@ const Synonyms = styled.p`
     color: var(--primary);
     line-height: ${24 / 16}rem;
     margin-left: 1.5rem;
+    display: inline;
+    cursor: pointer;
+  }
+
+  & span:hover {
+    text-decoration: underline;
   }
 `;
 
