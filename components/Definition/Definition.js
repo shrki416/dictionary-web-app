@@ -22,7 +22,6 @@ const Definition = () => {
   }
 
   return meanings?.map(({ partOfSpeech, definitions, synonyms }) => {
-    console.log(synonyms);
     return (
       <section key={definitions}>
         <PartOfSpeech>{partOfSpeech}</PartOfSpeech>
