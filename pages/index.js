@@ -10,6 +10,7 @@ import Search from "../components/Search";
 import { ThemeProvider } from "styled-components";
 import Word from "../components/Word";
 import WordContext from "../context/WordContext";
+import styled from "styled-components";
 import { useContext } from "react";
 import { useDarkMode } from "../lib/useDarkMode";
 
@@ -46,17 +47,38 @@ export default function Home() {
             <Footer />
           </main>
         ) : (
-          <div>
-            <div>😕</div>
+          <Error>
+            <Emoji>😕</Emoji>
             <h2>{words.title}</h2>
-            <p>{words.message}</p>
-            <p>{words.resolution}</p>
-          </div>
+            <p>
+              {words.message}. {words.resolution}
+            </p>
+          </Error>
         )}
       </MaxWidthWrapper>
     </ThemeProvider>
   );
 }
+
+const Error = styled.div`
+  display: grid;
+  place-items: center;
+  margin-top: 8.25rem;
+
+  h2,
+  p {
+    color: ${({ theme }) => theme.body};
+  }
+
+  p {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+`;
+
+const Emoji = styled.div`
+  font-size: ${64 / 16}rem;
+`;
 
 /* 
 resources:
