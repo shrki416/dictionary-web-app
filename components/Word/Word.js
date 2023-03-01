@@ -65,11 +65,13 @@ const Wrapper = styled.div`
     height: ${48 / 16}rem;
   }
 
-  & svg:hover path {
+  & svg:hover path,
+  svg:focus path {
     fill: var(--white);
   }
 
-  & svg:hover circle {
+  & svg:hover circle,
+  svg:focus circle {
     opacity: 1;
   }
 `;
