@@ -1,12 +1,15 @@
+import { useContext, useId } from "react";
+
 import { QUERIES } from "../../constants";
 import WordContext from "../../context/WordContext";
 import { fetchWords } from "../../lib/load-words";
 import styled from "styled-components";
-import { useContext } from "react";
 
 const Definition = () => {
   const { words, setWords } = useContext(WordContext);
   const { meanings } = words;
+
+  const id = useId();
 
   async function getWordDefinition(word) {
     try {
@@ -24,9 +27,9 @@ const Definition = () => {
         <PartOfSpeech>{partOfSpeech}</PartOfSpeech>
         <Meaning>Meanings</Meaning>
         <List>
-          {definitions.map(({ definition, example }) => {
+          {definitions.map(({ definition, example }, index) => {
             return (
-              <ListItem key={definition}>
+              <ListItem key={`${id}_${index}`}>
                 <DefinitionBody>{definition}</DefinitionBody>
                 <Example>{example && `"${example}"`}</Example>
               </ListItem>
@@ -38,7 +41,7 @@ const Definition = () => {
             Synonyms{" "}
             {synonyms.map((word) => {
               return (
-                <span key={word} onClick={() => getWordDefinition(word)}>
+                <span key={id} onClick={() => getWordDefinition(word)}>
                   {word}
                 </span>
               );
