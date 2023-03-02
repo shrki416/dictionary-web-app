@@ -1,3 +1,4 @@
+import { QUERIES } from "../../constants";
 import WordContext from "../../context/WordContext";
 import { fetchWords } from "../../lib/load-words";
 import styled from "styled-components";
@@ -10,11 +11,7 @@ const Definition = () => {
   async function getWordDefinition(word) {
     try {
       const data = await fetchWords(word);
-      if (data[0]) {
-        setWords(data[0]);
-      } else {
-        setWords(data);
-      }
+      data[0] ? setWords(data[0]) : setWords(data);
     } catch (error) {
       console.error(error);
       console.log(error);
@@ -59,9 +56,14 @@ const PartOfSpeech = styled.p`
   justify-content: center;
   margin: 2rem 0;
   font-style: italic;
+  font-weight: 700;
   font-size: ${18 / 16}rem;
   line-height: ${24 / 16}rem;
   color: ${({ theme }) => theme.body};
+
+  @media ${QUERIES.tabletAndUp} {
+    font-size: ${24 / 16}rem;
+  }
 
   &::after {
     content: "";
@@ -76,11 +78,20 @@ const Meaning = styled.p`
   font-size: ${16 / 16}rem;
   color: var(--gray-300);
   margin-bottom: 1rem;
+
+  @media ${QUERIES.tabletAndUp} {
+    font-size: ${20 / 16}rem;
+  }
 `;
 
 const List = styled.ul`
   font-size: ${15 / 16}rem;
   padding-left: 1rem;
+
+  @media ${QUERIES.tabletAndUp} {
+    font-size: ${18 / 16}rem;
+    line-height: ${24 / 16}rem;
+  }
 `;
 
 const ListItem = styled.li`
@@ -102,6 +113,7 @@ const Example = styled.p`
 
 const Synonyms = styled.p`
   font-size: ${20 / 16}rem;
+  font-weight: 700;
   color: var(--gray-300);
   line-height: ${24 / 16}rem;
 

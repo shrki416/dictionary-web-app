@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { QUERIES } from "../../constants";
 import WordContext from "../../context/WordContext";
 import newWindowIcon from "../../public/images/icon-new-window.svg";
 import styled from "styled-components";
@@ -17,14 +18,14 @@ const Footer = () => {
       </SourceHeader>
       {sourceUrls?.map((url) => {
         return (
-          <div key={url}>
-            <Link href={url}>
-              {url}
-              <span>
-                <Image src={newWindowIcon} alt="new window" />
-              </span>
-            </Link>
-          </div>
+          // <div>
+          <Link key={url} href={url}>
+            {url}
+            <span>
+              <Image src={newWindowIcon} alt="new window" />
+            </span>
+          </Link>
+          // </div>
         );
       })}
     </Wrapper>
@@ -55,6 +56,16 @@ const Wrapper = styled.footer`
     height: ${12 / 16}rem;
     margin-left: 1rem;
   }
+
+  @media ${QUERIES.tabletAndUp} {
+    a {
+      margin-left: 1rem;
+    }
+
+    img {
+      margin-left: 0.5rem;
+    }
+  }
 `;
 
 const SourceHeader = styled.p`
@@ -62,6 +73,11 @@ const SourceHeader = styled.p`
   line-height: ${18 / 16}rem;
   color: var(--gray-300);
   text-decoration: underline;
+
+  @media ${QUERIES.tabletAndUp} {
+    display: inline;
+    text-decoration: none;
+  }
 `;
 
 export default Footer;

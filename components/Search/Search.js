@@ -31,11 +31,7 @@ const Search = () => {
 
     try {
       const data = await fetchWords(search);
-      if (data[0]) {
-        setWords(data[0]);
-      } else {
-        setWords(data);
-      }
+      data[0] ? setWords(data[0]) : setWords(data);
     } catch (error) {
       console.log(error);
     }
