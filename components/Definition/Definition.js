@@ -21,9 +21,9 @@ const Definition = () => {
     }
   }
 
-  return meanings?.map(({ partOfSpeech, definitions, synonyms }) => {
+  return meanings?.map(({ partOfSpeech, definitions, synonyms }, index) => {
     return (
-      <section key={definitions}>
+      <section key={`${id}_${index}`}>
         <PartOfSpeech>{partOfSpeech}</PartOfSpeech>
         <Meaning>Meanings</Meaning>
         <List>

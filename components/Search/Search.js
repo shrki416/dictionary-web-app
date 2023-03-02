@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 import SearchIcon from "./SearchIcon";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
@@ -9,12 +9,17 @@ import styled from "styled-components";
 const Search = () => {
   const [search, setSearch] = useState("");
   const [error, setError] = useState(false);
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   const { setWords } = useContext(WordContext);
 
   const onFocus = () => {
     setError(false);
-    setSearch("");
+    // setSearch("");
   };
 
   const onChange = (e) => {
@@ -59,6 +64,7 @@ const Search = () => {
         </VisuallyHidden>
         <Form onSubmit={onSubmit}>
           <Input
+            ref={inputRef}
             type="text"
             value={search}
             id="search"
