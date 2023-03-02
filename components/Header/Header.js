@@ -1,16 +1,8 @@
-import { useEffect, useState } from "react";
-
 import Logo from "./Logo";
 import MoonIcon from "./MoonIcon";
 import styled from "styled-components";
 
 const Header = ({ theme, toggleTheme }) => {
-  const [font, setFont] = useState("mono");
-
-  useEffect(() => {
-    document.body.style.fontFamily = `var(--ff-${font})`;
-  }, [font]);
-
   return (
     <StyledHeader>
       <div>
@@ -20,8 +12,10 @@ const Header = ({ theme, toggleTheme }) => {
       <ThemeWrapper>
         <Select
           name="font"
-          value={font}
-          onChange={(e) => setFont(e.target.value)}
+          onChange={(e) => {
+            const font = e.target.value;
+            document.body.style.fontFamily = `var(--ff-${font})`;
+          }}
         >
           <option value="mono">Mono</option>
           <option value="serif">Serif</option>
