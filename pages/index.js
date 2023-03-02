@@ -19,14 +19,6 @@ export default function Home() {
 
   const { words } = useContext(WordContext);
 
-  // let error = false;
-
-  // if (words.title && words.message && words.resolution) {
-  //   error = true;
-  // } else {
-  //   error = false;
-  // }
-
   return (
     <ThemeProvider theme={theme === "light" ? light : dark}>
       <GlobalStyles />
