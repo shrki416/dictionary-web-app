@@ -1,4 +1,5 @@
 import { Howl } from "howler";
+import { QUERIES } from "../../constants";
 import WordContext from "../../context/WordContext";
 import styled from "styled-components";
 import { useContext } from "react";
@@ -36,8 +37,6 @@ const Word = () => {
       {audioFile?.length > 0 && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="75"
-          height="75"
           viewBox="0 0 75 75"
           onClick={playSound}
         >
@@ -74,10 +73,21 @@ const Wrapper = styled.div`
   svg:focus circle {
     opacity: 1;
   }
+
+  @media ${QUERIES.tabletAndUp} {
+    svg {
+      width: ${75 / 16}rem;
+      height: ${75 / 16}rem;
+    }
+  }
 `;
 
 const Header = styled.h1`
   color: ${({ theme }) => theme.body};
+
+  @media ${QUERIES.tabletAndUp} {
+    font-size: ${64 / 16}rem;
+  }
 `;
 
 const Phonetic = styled.span`
@@ -85,6 +95,10 @@ const Phonetic = styled.span`
   color: var(--primary);
   font-size: ${18 / 16}rem;
   line-height: ${24 / 16}rem;
+
+  @media ${QUERIES.tabletAndUp} {
+    font-size: ${24 / 16}rem;
+  }
 `;
 
 export default Word;
