@@ -19,7 +19,6 @@ const Search = () => {
 
   const onFocus = () => {
     setError(false);
-    // setSearch("");
   };
 
   const onChange = (e) => {
@@ -78,7 +77,7 @@ const Search = () => {
         </Form>
       </Wrapper>
       {error && (
-        <p style={{ color: `var(--error)` }}>Whoops, can't be empty...</p>
+        <p style={{ color: `var(--error)` }}>Whoops, can&apos;t be empty...</p>
       )}
     </>
   );
