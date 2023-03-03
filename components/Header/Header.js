@@ -1,5 +1,6 @@
 import Logo from "./Logo";
 import MoonIcon from "./MoonIcon";
+import Select from "../Select/Select";
 import styled from "styled-components";
 
 const Header = ({ theme, toggleTheme }) => {
@@ -10,17 +11,7 @@ const Header = ({ theme, toggleTheme }) => {
       </div>
 
       <ThemeWrapper>
-        <Select
-          name="font"
-          onChange={(e) => {
-            const font = e.target.value;
-            document.body.style.fontFamily = `var(--ff-${font})`;
-          }}
-        >
-          <option value="mono">Mono</option>
-          <option value="serif">Serif</option>
-          <option value="sans-serif">Sans-serif</option>
-        </Select>
+        <Select />
 
         <ThemeSwitcher>
           <ToggleLabel htmlFor="toggle">
@@ -45,11 +36,6 @@ const ThemeWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-`;
-
-const Select = styled.select`
-  /* all: unset; */
-  cursor: pointer;
 `;
 
 const ThemeSwitcher = styled.div`

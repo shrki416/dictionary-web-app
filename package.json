@@ -9,13 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.12",
     "@next/font": "^13.2.1",
     "howler": "^2.2.3",
+    "install": "^0.13.0",
     "next": "13.1.6",
+    "npm": "^9.6.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "styled-components": "^5.3.6",
-    "swr": "^2.0.4"
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^2.0.7",
