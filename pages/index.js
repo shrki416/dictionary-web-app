@@ -35,7 +35,7 @@ export default function Home() {
             property="og:description"
             content="An app that utilizes the Dictionary API to search words"
           />
-          <meta property="og:image" content="" />
+          <meta property="og:image" content="../public/images/preview.jpg" />
           <meta property="og:type" content="website" />
           <meta
             property="og:publish_date"
