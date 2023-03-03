@@ -29,7 +29,10 @@ export default function Home() {
           <meta name="description" content="Dictionary Web App" />
           <link rel="icon" href="/images/favicon.ico" />
           <meta property="og:url" content="" />
-          <link rel="canonical" href="" />
+          <link
+            rel="canonical"
+            href="https://aa-dictionary-web-app.vercel.app/"
+          />
           <meta property="og:title" content="Dictionary web app" />
           <meta
             property="og:description"
