@@ -1,4 +1,4 @@
-import { dark, light } from "../lib/theme";
+import { dark, light } from "../lib/Theme";
 
 import Definition from "../components/Definition";
 import Footer from "../components/Footer";
