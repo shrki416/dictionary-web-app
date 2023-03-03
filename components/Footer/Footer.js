@@ -18,14 +18,12 @@ const Footer = () => {
       </SourceHeader>
       {sourceUrls?.map((url) => {
         return (
-          // <div>
-          <Link key={url} href={url}>
+          <Link key={url} href={url} target="_blank">
             {url}
             <span>
               <Image src={newWindowIcon} alt="new window" />
             </span>
           </Link>
-          // </div>
         );
       })}
     </Wrapper>

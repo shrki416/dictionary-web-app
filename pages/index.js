@@ -24,9 +24,25 @@ export default function Home() {
       <GlobalStyles />
       <MaxWidthWrapper>
         <Head>
-          <title>Create Next App</title>
+          <title>Dictionary web app</title>
+          <meta name="robots" content="index, follow" />
           <meta name="description" content="Dictionary Web App" />
           <link rel="icon" href="/images/favicon.ico" />
+          <meta property="og:url" content="" />
+          <link rel="canonical" href="" />
+          <meta property="og:title" content="Dictionary web app" />
+          <meta
+            property="og:description"
+            content="An app that utilizes the Dictionary API to search words"
+          />
+          <meta property="og:image" content="" />
+          <meta property="og:type" content="website" />
+          <meta
+            property="og:publish_date"
+            content={new Date()}
+            name="publish_date"
+          />
+          <meta name="author" content="Ahmed Abdelaal" />
         </Head>
 
         <Header theme={theme} toggleTheme={toggleTheme} />
