@@ -38,7 +38,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here]()
+- Solution URL: [Add solution URL here](https://www.frontendmentor.io/challenges/dictionary-web-app-h5wwnyuKFL/hub)
 - Live Site URL: [Add live site URL here](https://aa-dictionary-web-app.vercel.app/)
 
 ## My process
