@@ -36,6 +36,7 @@ const Search = () => {
     try {
       const data = await fetchWords(search);
       data[0] ? setWords(data[0]) : setWords(data);
+      setSearch("");
     } catch (error) {
       console.log(error);
     }
