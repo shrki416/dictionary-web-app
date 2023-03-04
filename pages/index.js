@@ -90,30 +90,3 @@ const Error = styled.div`
 const Emoji = styled.div`
   font-size: ${64 / 16}rem;
 `;
-
-/* 
-resources:
-
-  * This is to fetch data from an API
-  https://medium.com/@kusuma844/easiest-way-for-next-js-to-fetch-external-api-for-displaying-data-2ebabbdd3c9e
-
-  * Darkmode resource using styled-components:
-  https://medium.com/bigpanda-engineering/dark-theme-with-styled-components-a573dd898e2a
-
-  * Select accessibility styles:
-  https://dev.to/emmabostian/creating-a-custom-accessible-drop-down-3gmo
-  https://css-tricks.com/striking-a-balance-between-native-and-custom-select-elements/
-  https://codepen.io/sandrina-p/pen/YzyOYRr
-  https://towardsdev.com/how-to-create-an-accessible-custom-select-dropdown-in-react-9d9858415f10 - select in react
-  https://codepen.io/tcomdev/pen/WNXeqoG?editors=1010 - select in react
-
-  * font optimization in next.js:
-  https://blog.logrocket.com/next-js-font-optimization/
-  https://web.dev/variable-fonts/
-
-  * line after text:
-  https://stackoverflow.com/questions/38202019/css-horizontal-line-on-one-side-of-text
-
-  * supress audio warning for AudioContext:
-  https://stackoverflow.com/questions/70127003/howler-js-react-audiocontext-console-warning
-*/

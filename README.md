@@ -1,34 +1,79 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Frontend Mentor - Dictionary web app solution
 
-## Getting Started
+This is a solution to the [Dictionary web app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/dictionary-web-app-h5wwnyuKFL). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-First, run the development server:
+## Table of contents
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Note: Delete this note and update the table of contents based on what sections you keep.**
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Overview
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### The challenge
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Users should be able to:
 
-## Learn More
+- Search for words using the input field
+- See the Free Dictionary API's response for the searched word
+- See a form validation message when trying to submit a blank form
+- Play the audio file for a word when it's available
+- Switch between serif, sans serif, and monospace fonts
+- Switch between light and dark themes
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
 
-To learn more about Next.js, take a look at the following resources:
+### Screenshot
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![](./public/images/preview.jpg)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Links
 
-## Deploy on Vercel
+- Solution URL: [Add solution URL here]()
+- Live Site URL: [Add live site URL here](https://aa-dictionary-web-app.vercel.app/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## My process
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is build with Next.js and Styled Components. The Dictionary API was used to fetch the data.
+
+### Built with
+
+- Semantic HTML5 markup - as much as possible
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- [Dictionary API](https://dictionaryapi.dev/) - API for fetching data
+- [Howler.js](https://howlerjs.com/) - JS library for playing audio files
+- [React](https://reactjs.org/) - JS library
+- [Next.js](https://nextjs.org/) - React framework
+- [Styled Components](https://styled-components.com/) - For styles
+
+### What I learned
+
+- This wasn't as easy and straight forward as I thought. I had to do a lot of research to get the desired result. I learned a lot of new things and I'm happy with the result. There are things that I want to improve in the future, of course but I'm happy with the result. Amongst the things I learned are: font optimization in NextJS, working with Audio files, using the Dictionary API, and implementing darkmode using styled-components.
+
+### Continued development
+
+- This application is built on Next.js and Styled Components. I want to continue learning and improving my skills in these technologies. I want to learn more about the best practices and how to optimize the application. The data fetching is predominantly done on the client side. I want to learn how to do it on the server side and utilize Next.js best features. I figured as I learn this deeper I will come back and improve and iterate on this project. Once NextJS 13 is stable I will migrate the project to it.
+
+### Useful resources
+
+- [Decrotative line](https://stackoverflow.com/questions/38202019/css-horizontal-line-on-one-side-of-text) - This helped me with placing a line after the text and giving me an idea on how to do it using pseudoelements.
+- [Supress warning](https://stackoverflow.com/questions/70127003/howler-js-react-audiocontext-console-warning) - I used Howler.js to play the audio files. I had to suppress the warning for AudioContext since the library is already using it.
+- [Font Optimization](https://blog.logrocket.com/next-js-font-optimization/) - This helped me with optimizing the fonts in Next.js.
+- [Darkmode](https://medium.com/bigpanda-engineering/dark-theme-with-styled-components-a573dd898e2a) - This helped me with implementing the darkmode using styled-components.
+
+## Author
+
+- Website - [Ahmed Abdelaal](https://aa-dev.io)
+- Frontend Mentor - [@shrki416](https://www.frontendmentor.io/profile/shrki416)
