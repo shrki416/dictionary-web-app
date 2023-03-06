@@ -14,7 +14,7 @@ const Definition = () => {
   async function getWordDefinition(word) {
     try {
       const data = await fetchWords(word);
-      data[0] ? setWords(data[0]) : setWords(data);
+      data?.[0] && setWords(data?.[0]);
     } catch (error) {
       console.error(error);
       console.log(error);

@@ -35,7 +35,7 @@ const Search = () => {
 
     try {
       const data = await fetchWords(search);
-      data[0] ? setWords(data[0]) : setWords(data);
+      data?.[0] && setWords(data?.[0]);
       setSearch("");
     } catch (error) {
       console.log(error);
@@ -59,10 +59,10 @@ const Search = () => {
   return (
     <>
       <Wrapper outline={changeOutline}>
-        <VisuallyHidden>
-          <label htmlFor="search">Search for any word:</label>
-        </VisuallyHidden>
         <Form onSubmit={onSubmit}>
+          <VisuallyHidden>
+            <label htmlFor="search">Search for words:</label>
+          </VisuallyHidden>
           <Input
             ref={inputRef}
             type="text"
@@ -73,6 +73,7 @@ const Search = () => {
             placeholder="Search for any word..."
           />
           <Button>
+            <VisuallyHidden>Search</VisuallyHidden>
             <SearchIcon />
           </Button>
         </Form>
